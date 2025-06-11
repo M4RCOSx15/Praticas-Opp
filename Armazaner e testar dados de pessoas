@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+
+public class Att {
+    public static void main(String[] args) {
+        Pessoa pessoa = new Pessoa("Marcos", 18);
+        Pessoa pessoa1 = new Pessoa("Joana", 20);
+        Pessoa pessoa2 = new Pessoa("Mateus", 57);
+        ArrayList <Pessoa> lista = new ArrayList<>();
+        lista.add(pessoa);
+        lista.add(pessoa1);
+        lista.add(pessoa2);
+        for (Pessoa m : lista) {
+            System.out.println(m.nome+" tem "+ m.idade+" Anos");
+        }
+        for(Pessoa percorrer : lista){
+            if(percorrer.idade>=18){
+                System.out.println(percorrer.nome+" é maior de idade");
+            }
+        }
+
+    }
+}
+
+class Pessoa{
+   String nome;
+   int idade;
+   public Pessoa(String nome, int idade){
+     this.nome = nome;
+     this.idade = idade;
+   }
+}
