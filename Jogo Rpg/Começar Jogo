@@ -1,0 +1,35 @@
+package classes;
+import java.util.Scanner;
+
+public class Play extends Jogo{
+    public static void main(String[]args) {
+     Jogo jogo = new Jogo();
+     Gameplay Jogoacontecendo = new Gameplay(jogo);
+     Scanner leia = new Scanner(System.in);
+     int escolha,i=0;
+
+     jogo.Inciar();
+     jogo.SetNome();
+       do {
+        System.out.println("Você possui algumas opções de ações: \n [1] Andar \n [2] Pausar \n [3] Encerrar: ");
+     escolha = leia.nextInt();
+        switch (escolha) {
+            case 1: 
+            Jogoacontecendo.SetAndar();
+            Jogoacontecendo.GetDirecao();
+                 i = jogo.GetFim();
+        
+                break;
+            case 2:
+            jogo.Pausar();
+        break;
+        case 3:
+        jogo.Encerrar();
+        i = jogo.GetFim();
+        break;
+        }
+    
+       } while (i != -1); 
+    }
+    
+}
