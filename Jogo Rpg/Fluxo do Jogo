@@ -1,0 +1,131 @@
+package classes;
+
+import java.util.Scanner;
+
+public class Gameplay extends Play {
+    int andar,numeroAleatorio,moeda;
+    Scanner leia = new Scanner(System.in);
+    String decisao;
+    Jogo jogo;
+  
+    public Gameplay(Jogo jogo){
+        this.jogo = jogo;
+    }
+  
+    public void SetAndar(){
+        System.out.println("Você deseja andar: 100 metros,200 metros?");
+        andar = leia.nextInt();
+
+    }
+
+    public String GetAcabaraposmorrer(String resultado){
+   if ("morreu".equals(resultado)) {
+    jogo.Encerrar();
+   }
+   return resultado;
+    }
+    public String GetDirecao(){
+        String resultado = "Ola";
+        switch (andar) {
+            case 100:
+            System.out.println("Você encontrou um goblin! \n Tome cuidado");
+            try {
+                Thread.sleep(2000);
+                System.out.println("Qual será sua próxima ação??");
+            } catch (Exception e) {
+               
+                   System.out.println("Erro");
+          
+                }
+           System.out.println("Você pode golpear, Fugir, Negociar:");
+                decisao = leia.next();
+                if(decisao.equals("golpear")){
+                   numeroAleatorio= (int)(Math.random()*10);
+                   if(numeroAleatorio%2 ==0){
+                    System.out.println(numeroAleatorio);
+                    System.out.println("Sucesso!! \n Você passou de fase ");
+                    return " Você passou de fase!";
+                   }else{
+                    System.out.println("Você morreu!");
+                     
+                     resultado = "morreu";
+                   }
+                   return GetAcabaraposmorrer(resultado);
+                 }
+                 if(decisao.equals("Fugir")){
+                    System.out.println("Covarde, o goblin ri de você \n Você teve 20 moedas roubadas por ele!");
+                  resultado ="morreu";
+                 return GetAcabaraposmorrer(resultado);  
+                } 
+
+                 if(decisao.equals("Negociar")){
+                    System.out.println("Você possui algumas moedas \n deseja dar 15 moedas ou 45 moedas?");
+                    moeda=leia.nextInt();
+
+                 
+                 if(moeda == 15){
+                    System.out.println("-----Você foi morto por ser mesquinho-----");
+                    jogo.Encerrar();
+                    resultado = "morreu";
+                    return GetAcabaraposmorrer(resultado);}
+                 if(moeda == 45){
+                    System.out.println("Ele aceita e você ganhou XP \n Parabéns ,você passou de fase!");
+                 resultado = "bonus";
+                    return "Bonus";
+                }
+            }
+                
+                
+                
+                
+                 case 200:
+                 System.out.println("Você encontrou um dragão!!");
+                 System.out.println("Você deseja Fugir, golpear, explorar");
+                 decisao=leia.next();
+
+                 if(decisao.equals("golpear")){
+                    System.out.println("Você é doido(a)");
+                   try {
+                    Thread.sleep(1500);
+                   } catch (Exception e) {
+                   System.out.println("Erro");
+                   } System.out.println("...");
+                   try {
+                    Thread.sleep(1000);
+                   } catch (Exception e) {
+                    System.out.println("erro");
+                   }
+                   System.out.println("Você golpeia ,mas não surte efeito...");
+                   System.out.println("Deseja continuar ?sim ou nao");
+                   decisao=leia.next();
+                   if (decisao.equals("sim")) {
+                    System.out.println("Você se saiu bem \n Passou de fase");
+                    resultado ="morreu";
+                   return GetAcabaraposmorrer(resultado);
+                   }
+                   if(decisao.equals("nao")){
+                    System.out.println("Você foi devorado ");
+                   resultado ="morreu";
+                   return GetAcabaraposmorrer(resultado);
+                   }
+
+                       
+                   }
+                        if (decisao.equals("Fugir")) {
+                             System.out.println("Você morreu!! \n Não tem como correr de um dragãokkkk");
+                              resultado ="morreu";
+                   return GetAcabaraposmorrer(resultado);
+                        } 
+
+                         if(decisao.equals("explorar")){
+                            System.out.println("Você encontrou o ONE PIECE!!!");
+                            System.out.println("Você acaba de fazer um dos melhores finais de toda a história");
+                         }
+                       resultado ="morreu";
+                   return GetAcabaraposmorrer(resultado);
+        
+            
+        }
+        return "Ola";
+    }
+}
