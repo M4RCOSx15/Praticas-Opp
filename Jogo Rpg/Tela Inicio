@@ -1,0 +1,64 @@
+package classes;
+
+import java.util.Scanner;
+
+
+public class Jogo implements Escopo  {
+    Scanner leia = new Scanner(System.in);
+    String pause;
+    String nome;
+    int Fim;
+    
+    public void Inciar(){
+        System.out.println("-------------------------------------");
+        System.out.println("_____________JOGO-INICIADO___________");
+        System.out.println("-------------------------------------");
+    };
+    
+   public void Pausar(){
+        System.out.println("Jogo pausado");
+        System.out.println("Digite [S] para continuar o jogo:");
+        pause = leia.next();
+      if(pause.equals("S")){
+         Despause();
+      }  
+   };
+   
+   public void Encerrar(){
+    System.out.println("Deseja continuar ?\n  [1] sim ou  [-1] nao?");
+    Fim = leia.nextInt();
+    if(Fim==1){
+     Inciar();
+    }else{
+        System.out.println("FIM DO JOGO!");
+        
+    }
+
+    
+   };
+   private void Despause(){
+    System.out.println("Jogo despausado");
+   }
+  
+  
+   public void LimparTela() throws InterruptedException{
+    int i;
+    for(i=0;i<25;i++){
+        System.out.println();
+        Thread.sleep(100);
+    }
+
+   
+   } 
+   
+   
+   public void SetNome(){
+    System.out.println("Digite seu nome :");   
+    nome = leia.next();
+    System.out.println("BEM VINDO "+nome);
+
+    }
+    public int GetFim(){
+        return Fim;
+    }
+}
