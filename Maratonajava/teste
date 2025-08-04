@@ -1,0 +1,15 @@
+package praticar.aula65;
+
+public class Teste {
+    public static void main(String[] args) {
+        Federacao federacao = new Federacao("FIDE");
+        Players player = new Players("Bobby Fischer", federacao);
+        Players player2 = new Players("Mikhail Tal", federacao);
+        Players player3 = new Players("Kasparov", federacao);
+        Players [] totPlayers = {player,player2,player3};
+
+        for (Players players : totPlayers) {
+            players.Imprimir();
+        }
+    }
+}
