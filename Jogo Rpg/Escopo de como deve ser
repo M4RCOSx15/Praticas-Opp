@@ -1,0 +1,6 @@
+package classes;
+public interface Escopo{
+   public void Inciar();
+   public void Pausar();
+   public void Encerrar();
+}

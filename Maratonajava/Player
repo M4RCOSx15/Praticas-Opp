@@ -1,0 +1,29 @@
+package praticar.aula65;
+
+public class Players {
+    private String nome;
+    private Federacao federacao;
+    Players (String nome,Federacao federacao){
+        this.nome = nome;
+        this.federacao = federacao;
+    }
+
+    public void Imprimir(){
+        System.out.println(nome);
+         federacao.Nome();
+    }
+   
+
+
+}
+
+class Federacao{
+    private String nome ;
+    Federacao (String nome){
+        this.nome = nome;
+    }
+
+    public void Nome(){
+        System.out.println("Federação :"+ nome);
+    }
+}

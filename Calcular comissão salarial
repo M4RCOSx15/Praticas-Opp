@@ -1,0 +1,82 @@
+//Este é o meu metodo main onde eu instancio o meu objeto da classe Salario
+/*Este codigo eu segui a seguinte proposta: Uma empresa que paga uma comissão aos seus colaboradores
+ *de acordo com o seu ganho semanal.
+ *ex:ganho 3000 com vendas semanais ,então, terei 9% dessas vendas mais o meu salario semanal que seria
+ * de 200 reais.
+ * No fim eu utilizei um HashMap para mostrar ao úsuario quantos colaboradores receberam uma quantidade x
+ * do salario
+ */
+package lista;
+
+public class Atividade4 {
+    public static void main(String[] args) {
+    Salario Din = new Salario();
+    Din.SetCalculo();
+    Din.GetSalario();
+    }
+}
+
+
+
+
+//Esta é a minha classe 
+package lista;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Salario {
+ Scanner leia = new Scanner(System.in);
+ ArrayList <Float> num = new ArrayList<>();
+  int cont,i;
+  
+   
+ public void SetCalculo(){
+         
+        Float valor;
+        do{
+        System.out.println("Digite quantos arrecadou ");
+        valor = leia.nextFloat();
+          if(valor!=-1){
+            num.add(valor);
+          }
+        }while(valor!=-1);
+        cont = num.size();
+      
+    }
+
+
+
+    public float GetSalario(){
+  
+          float Sat [] = new float[cont];
+      float calculoSalario [] = new float[cont];
+        
+         for(i=0;i<cont;i++){
+            calculoSalario[i] = num.get(i) + num.get(i)*0.09f;
+           
+        } for(i=0;i<cont;i++){ 
+             Sat[i]=calculoSalario[i];    
+     System.out.println(Sat[i]);
+    } 
+    HashMap <Float,Integer> percorrer = new HashMap<>();
+    for (float f : calculoSalario) {
+        if(percorrer.containsKey(f)){
+            percorrer.put(f, percorrer.get(f)+1);
+        }
+        else{
+            percorrer.put(f, 1);
+        }
+    }
+    for (Float salario : percorrer.keySet()) {
+        if(percorrer.get(salario)>1){
+            System.out.println("O salario:'"+salario+"'' foi recebido por :"+percorrer.get(salario)+" trabalhadores");
+        }
+    }
+    
+     return cont;
+}
+     
+}
+ 

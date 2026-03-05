@@ -1,0 +1,60 @@
+/*A proposta para essa 
+ *atividade foi a seguinte:Fazer um algoritmo
+ *que me fala o nível de envolvimento de uma pessoa 
+ * em um assassinato usando da metodologia
+ * de 5 perguntas
+ */
+package lista;
+
+public class Atividade2 {
+    public static void main(String[] args) {
+        Investigacao Teste = new Investigacao();
+        Teste.SetResp();
+        Teste.GetResp();
+    }
+    
+}
+
+
+
+package lista;
+
+import java.util.Scanner;
+
+public class Investigacao {
+    Scanner leia = new Scanner(System.in);
+    int respperguntas [] = new int[5];
+    int i,cont=0;
+    String perguntas [] = {"Telefonou para a vítima?",
+"Esteve no local do crime?",
+"Mora perto da vítima?",
+"Devia para a vítima?",
+"Já trabalhou com a vítima?"};
+ public void SetResp(){
+    for(i=0;i<5;i++){
+    System.out.println(perguntas[i]+" 1 para sim 0 para não:");
+    respperguntas[i] = leia.nextInt();
+    if(respperguntas[i]==1){cont+=1;}
+    System.out.println(cont);
+    }
+   leia.close();
+  }
+        
+  public String GetResp(){
+             String tester="i";
+        if(cont==2){
+             System.out.println("pessoa suspeita"); 
+        }
+        if(cont==3 || cont==4){
+             System.out.println("Pessoa cumplice"); 
+        }
+         if(cont ==5){
+            System.out.println("Pessoa é o assassino");
+        
+ 
+    }
+
+    return tester;
+ 
+   }
+}
